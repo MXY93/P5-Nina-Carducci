@@ -119,81 +119,23 @@
         .attr("src", element.attr("src"));
       $(`#${lightboxId}`).modal("toggle");
     },
-    prevImage() {
-      let activeImage = null;
-      $("img.gallery-item").each(function() {
-        if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
-          activeImage = $(this);
-        }
-      });
-      let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
-      let imagesCollection = [];
-      if (activeTag === "all") {
-        $(".item-column").each(function() {
-          if ($(this).children("img").length) {
-            imagesCollection.push($(this).children("img"));
-          }
-        });
-      } else {
-        $(".item-column").each(function() {
-          if (
-            $(this)
-              .children("img")
-              .data("gallery-tag") === activeTag
-          ) {
-            imagesCollection.push($(this).children("img"));
-          }
-        });
-      }
-      let index = 0,
-        next = null;
-
-      $(imagesCollection).each(function(i) {
-        if ($(activeImage).attr("src") === $(this).attr("src")) {
-          index = i ;
-        }
-      });
-      next =
-        imagesCollection[index] ||
-        imagesCollection[imagesCollection.length - 1];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
+    prevImage(lightboxId) {
+      let activeTag = $(".nav-link.active-tag").data("images-toggle");
+      let images = activeTag === "all" ? $(".gallery-item") : $(".gallery-item[data-gallery-tag='" + activeTag + "']");
+      let activeSrc = $("#" + lightboxId).find(".lightboxImage").attr("src");
+      let activeIndex = images.map(function () { return $(this).attr("src"); }).get().indexOf(activeSrc);
+      let prevIndex = (activeIndex - 1 + images.length) % images.length;
+      let prevSrc = images.eq(prevIndex).attr("src");
+      $("#" + lightboxId).find(".lightboxImage").attr("src", prevSrc);
     },
-    nextImage() {
-      let activeImage = null;
-      $("img.gallery-item").each(function() {
-        if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
-          activeImage = $(this);
-        }
-      });
-      let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
-      let imagesCollection = [];
-      if (activeTag === "all") {
-        $(".item-column").each(function() {
-          if ($(this).children("img").length) {
-            imagesCollection.push($(this).children("img"));
-          }
-        });
-      } else {
-        $(".item-column").each(function() {
-          if (
-            $(this)
-              .children("img")
-              .data("gallery-tag") === activeTag
-          ) {
-            imagesCollection.push($(this).children("img"));
-          }
-        });
-      }
-      let index = 0,
-        next = null;
-
-      $(imagesCollection).each(function(i) {
-        if ($(activeImage).attr("src") === $(this).attr("src")) {
-          index = i;
-        }
-      });
-      next = imagesCollection[index] || imagesCollection[0];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
+    nextImage(lightboxId) {
+      let activeTag = $(".nav-link.active-tag").data("images-toggle");
+      let images = activeTag === "all" ? $(".gallery-item") : $(".gallery-item[data-gallery-tag='" + activeTag + "']");
+      let activeSrc = $("#" + lightboxId).find(".lightboxImage").attr("src");
+      let activeIndex = images.map(function () { return $(this).attr("src"); }).get().indexOf(activeSrc);
+      let nextIndex = (activeIndex + 1) % images.length;
+      let nextSrc = images.eq(nextIndex).attr("src");
+      $("#" + lightboxId).find(".lightboxImage").attr("src", nextSrc);
     },
     createLightBox(gallery, lightboxId, navigation) {
       gallery.append(`<div class="modal fade" id="${
@@ -239,8 +181,8 @@
       if ($(this).hasClass("active-tag")) {
         return;
       }
-      $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(".nav-link").removeClass("active active-tag");
+      $(this).addClass("active active-tag");
 
       var tag = $(this).data("images-toggle");
 
