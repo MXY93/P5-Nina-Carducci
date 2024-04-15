@@ -25,6 +25,50 @@
 	<meta name="language" content="fr-FR">
 	<meta name="robots" content="index, follow">
 	<meta name="google-site-verification" content="4j8RloOjeNbufrGhzQYsCVBrDXBX4_S5lDreiT9l3vc" />
+	<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "ProfessionalService",
+		  "name": "Nina Carducci, Photographe à Bordeaux",
+		  "image": [
+			"https://raw.githubusercontent.com/MXY93/P5-Nina-Carducci/main/assets/images/nina-carducci.webp",
+			"https://raw.githubusercontent.com/MXY93/P5-Nina-Carducci/main/assets/images/gallery/concerts/chanteur-concert-fumee-lumieres.webp",
+			"https://raw.githubusercontent.com/MXY93/P5-Nina-Carducci/main/assets/images/gallery/mariage/mains-maries.webp"
+		],
+		  "@id": "https://nina-carducci.github.io/",
+		  "url": "https://nina-carducci.github.io/",
+		  "telephone": "05 56 67 78 89",
+		  "address": {
+			"@type": "PostalAddress",
+			"streetAddress": "68 avenue Alsace-Lorraine",
+			"addressLocality": "Bordeaux",
+			"postalCode": "33200",
+			"addressCountry": "FR"
+		  },
+		  "geo": {
+			"@type": "GeoCoordinates",
+			"latitude": 44.837789,
+			"longitude": -0.57918
+		  },
+		  "openingHoursSpecification": {
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": [
+			  "Monday",
+			  "Tuesday",
+			  "Wednesday",
+			  "Thursday",
+			  "Friday"
+			],
+			"opens": "10:00",
+			"closes": "19:00"
+		  },
+		  "sameAs": [
+			"https://www.instagram.com/ninacarducci.photo/?hl=fr"
+		  ],
+		  "priceRange": "50€ - 400€",
+		  "description": "Nina Carducci, photographe professionnelle à Bordeaux, spécialisée en portraits et événements. Réservez votre session photo maintenant."
+		}
+	</script>
 </head>
 <body>
 <header class="top-header" itemscope itemtype="https://schema.org/Person">
@@ -48,14 +92,17 @@
 				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 			</div>
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="./assets/images/slider/homme-costume-malette.webp" class="d-block w-100" alt="working man in a suit" itemprop="description" itemscope itemtype="https://schema.org/Photograph">
+				<div class="carousel-item active" itemscope itemtype="https://schema.org/Photograph">
+					<img src="./assets/images/slider/homme-costume-malette.webp" class="d-block w-100" alt="working man in a suit" itemprop="image">
+					<meta itemprop="description" content="Working man in a suit">
 				</div>
-				<div class="carousel-item">
-					<img src="./assets/images/slider/fans-concert.webp" class="d-block w-100" alt="fans at a concert" itemprop="description" itemscope itemtype="https://schema.org/Photograph">
+				<div class="carousel-item" itemscope itemtype="https://schema.org/Photograph">
+					<img src="./assets/images/slider/fans-concert.webp" class="d-block w-100" alt="fans at a concert" itemprop="image">
+					<meta itemprop="description" content="Fans at a concert">
 				</div>
-				<div class="carousel-item">
-					<img src="./assets/images/slider/maries-embrassent.webp" class="d-block w-100" alt="brides kissing" itemprop="description" itemscope itemtype="https://schema.org/Photograph">
+				<div class="carousel-item" itemscope itemtype="https://schema.org/Photograph">
+					<img src="./assets/images/slider/maries-embrassent.webp" class="d-block w-100" alt="brides kissing" itemprop="image">
+					<meta itemprop="description" content="Brides kissing">
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
